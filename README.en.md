@@ -43,7 +43,7 @@ Execution uses one worker, Chromium and zero retries. There are no sleeps, DOM e
 
 Actions publishes a per-case summary and a `test-results` artifact retained for 7 days: HTML report, JUnit, full axe JSON and failure traces/screenshots. Extract the ZIP and open `playwright-report/index.html`. `.env` and outputs are ignored from the first commit.
 
-The gate rejects missing, malformed or empty reports, failures, skips and an unsuccessful test step. `check_summary.py` verifies these conditions using eight inputs. W3C availability failures fail the run: inspect HTTP responses/traces before rerunning.
+The gate requires all six scenarios and rejects missing, malformed, empty or incomplete reports, failures, skips and an unsuccessful test step. `check_summary.py` verifies these conditions using ten inputs. W3C availability failures fail the run: inspect HTTP responses/traces before rerunning.
 
 For axe violations, inspect the rule, selector and `helpUrl` in the attachment. Reproduce the issue before changing the test. For focus failures, check the actual Tab sequence and accessible name. Do not add exclusions just to get a green result.
 

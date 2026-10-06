@@ -43,7 +43,7 @@ A execução usa um worker, Chromium e zero retries. Não há sleeps, alteraçã
 
 O Actions publica summary por cenário e artifact `test-results` por 7 dias: relatório HTML, JUnit, JSON completo do axe e trace/screenshot em falhas. Extraia o ZIP e abra `playwright-report/index.html`. `.env` e outputs são ignorados desde o primeiro commit.
 
-O gate rejeita relatório ausente, inválido ou vazio, falhas, skips e uma etapa de testes que não terminou com sucesso. `check_summary.py` verifica essas condições com oito entradas. Uma indisponibilidade do W3C reprova a execução: investigue resposta HTTP/trace antes de rodar novamente.
+O gate exige os seis cenários e rejeita relatório ausente, inválido, vazio ou incompleto, falhas, skips e uma etapa de testes que não terminou com sucesso. `check_summary.py` verifica essas condições com dez entradas. Uma indisponibilidade do W3C reprova a execução: investigue resposta HTTP/trace antes de rodar novamente.
 
 Para uma violação axe, consulte regra, seletor e `helpUrl` no attachment. Confirme o problema na página antes de mudar o teste. Para foco, examine a ordem real de Tab e o nome acessível. Não aceite uma exclusão só para deixar a execução verde.
 

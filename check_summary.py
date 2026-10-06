@@ -8,8 +8,8 @@ import textwrap
 REPOS = ('.',)
 
 
-def report(child='', count=1, failures=0, errors=0, skipped=0):
-    case = f'<testcase name="case">{child}</testcase>' if count else ''
+def report(child='', count=6, failures=0, errors=0, skipped=0):
+    case = f'<testcase name="case">{child}</testcase>' * count
     return (f'<testsuites><testsuite tests="{count}" failures="{failures}" '
             f'errors="{errors}" skipped="{skipped}">'
             f'{case}</testsuite></testsuites>')
@@ -22,6 +22,8 @@ for name in REPOS:
         ('pass', report(), 'success', 0),
         ('missing', None, 'success', 1),
         ('empty', report(count=0), 'success', 1),
+        ('incomplete', report(count=5), 'success', 1),
+        ('unexpected-count', report(count=7), 'success', 1),
         ('malformed', '<testsuites>', 'success', 1),
         ('failed', report('<failure/>', failures=1), 'success', 1),
         ('error', report('<error/>', errors=1), 'success', 1),

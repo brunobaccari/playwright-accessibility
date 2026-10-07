@@ -62,10 +62,7 @@ jobs:
               lines += ["Contagens extraídas dos relatórios disponíveis. Uma interrupção pode impedir o registro de todos os cenários.", ""]
           else:
               lines += ["Nenhum JUnit foi gerado; não é possível confirmar a execução dos cenários. Confira os logs das etapas anteriores.", ""]
-          lines += ["Alvo: " + os.environ["BASE_URL"], "", "| Cenário | Resultado |", "| --- | --- |"]
-          for case in cases:
-              status = "falhou" if case.find("failure") is not None or case.find("error") is not None else "ignorado" if case.find("skipped") is not None else "passou"
-              lines.append("| " + case.get("name", "sem nome").replace("|", "\\|").replace("\n", " ") + " | " + status + " |")
+          lines += ["Alvo: " + os.environ["BASE_URL"]]
           lines += ["", "O controle negativo passa quando o axe encontra defeitos conhecidos na página before. Isso não aprova sua acessibilidade.", "", "Tags axe: WCAG 2.0/2.1 A/AA; teclado em Chromium. Sem certificação WCAG, leitor de tela ou envio de formulário.", "", "Artifact: HTML Playwright, scans axe completos (incluindo incomplete), JUnit e evidências de falha. Retenção: 7 dias."]
           lines += ['', '| Cenário | Resultado | Duração (s) |', '| --- | --- | ---: |']
           for case in cases:

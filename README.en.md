@@ -54,3 +54,5 @@ This is an educational demo originally from 2012, not a client application. The 
 Axe can return `incomplete` results; these require manual review and are not treated as automatic approval. Focus assertions establish its destination, not the visual quality of the focus indicator.
 
 References checked on 2026-10-06: [Playwright and axe](https://playwright.dev/docs/accessibility-testing), [W3C demo scope and purpose](https://www.w3.org/WAI/demos/bad/Overview.html).
+
+Final-state screenshots are also captured for passing UI tests and stored in artifacts, outside Git.

@@ -38,6 +38,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import glob
+          import html
           import os
           import xml.etree.ElementTree as ET
           from pathlib import Path
@@ -66,6 +67,11 @@ jobs:
               status = "falhou" if case.find("failure") is not None or case.find("error") is not None else "ignorado" if case.find("skipped") is not None else "passou"
               lines.append("| " + case.get("name", "sem nome").replace("|", "\\|").replace("\n", " ") + " | " + status + " |")
           lines += ["", "O controle negativo passa quando o axe encontra defeitos conhecidos na página before. Isso não aprova sua acessibilidade.", "", "Tags axe: WCAG 2.0/2.1 A/AA; teclado em Chromium. Sem certificação WCAG, leitor de tela ou envio de formulário.", "", "Artifact: HTML Playwright, scans axe completos (incluindo incomplete), JUnit e evidências de falha. Retenção: 7 dias."]
+          lines += ['', '| Cenário | Resultado | Duração (s) |', '| --- | --- | ---: |']
+          for case in cases:
+              status = 'falhou' if case.find('failure') is not None or case.find('error') is not None else 'ignorado' if case.find('skipped') is not None else 'passou'
+              name = html.escape(case.get('name', 'sem nome')).replace('|', '&#124;').replace('\n', ' ')
+              lines.append(f"| {name} | {status} | {case.get('time', '-')} |")
           gate_passed = len(cases) == 6 and not (invalid or failed or skipped) and os.environ["TEST_OUTCOME"] == "success"
           lines += ["", "Gate: **aprovado**." if gate_passed else "Gate: **reprovado**. Todos os cenários devem executar e passar, com JUnit válido."]
           summary_file = Path(os.environ["SUMMARY_FILE"])

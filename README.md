@@ -54,3 +54,5 @@ O demo é educacional, originalmente de 2012; não é uma aplicação de cliente
 As verificações de axe podem marcar casos como `incomplete`; esses itens exigem revisão manual e não são tratados como aprovação automática. As asserções de foco comprovam seu destino, não a qualidade visual do indicador.
 
 Referências consultadas em 06/10/2026: [Playwright e axe](https://playwright.dev/docs/accessibility-testing), [escopo e propósito do demo W3C](https://www.w3.org/WAI/demos/bad/Overview.html).
+
+Screenshots do estado final também são capturados nos testes de interface aprovados e ficam nos artifacts, fora do Git.

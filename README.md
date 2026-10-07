@@ -56,3 +56,5 @@ As verificações de axe podem marcar casos como `incomplete`; esses itens exige
 Referências consultadas em 06/10/2026: [Playwright e axe](https://playwright.dev/docs/accessibility-testing), [escopo e propósito do demo W3C](https://www.w3.org/WAI/demos/bad/Overview.html).
 
 Screenshots do estado final também são capturados nos testes de interface aprovados e ficam nos artifacts, fora do Git.
+
+Husky: com Node 24 e as dependências da stack instalados, rode `npm ci` para ativar o pre-commit. `npm run check:local` verifica o diff, o gate dos relatórios e os checks de tipos/lint existentes. O hook também bloqueia arquivos ignorados no índice. Testes que usam navegador, emulador ou API continuam no CI.

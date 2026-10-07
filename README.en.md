@@ -56,3 +56,5 @@ Axe can return `incomplete` results; these require manual review and are not tre
 References checked on 2026-10-06: [Playwright and axe](https://playwright.dev/docs/accessibility-testing), [W3C demo scope and purpose](https://www.w3.org/WAI/demos/bad/Overview.html).
 
 Final-state screenshots are also captured for passing UI tests and stored in artifacts, outside Git.
+
+Husky: with Node 24 and the stack dependencies installed, run `npm ci` to enable pre-commit. `npm run check:local` checks the diff, report gate and existing type/lint checks. The hook also rejects ignored files in the index. Browser, emulator and API tests remain in CI.
